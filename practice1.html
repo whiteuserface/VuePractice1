@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice1</title>
+    <!-- 개발버전, 도움되는 콘솔 경고를 포함. -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <form>
+            <input type="text"><br>
+            <button v-on:click.prevent="submit">submit</button>
+        </form>
+        {{year}}<br>
+        <button v-on:click="plus">더하기</button>
+        <button v-on:click="minus">빼기</button>
+        {{otherMethod('안녕')}}
+        <input :type="type" :value="inputData">
+        <a :href="dlsdlworldSite('index.html')">dlsdlworld</a>
+        <button v-on:click="click">click me</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                person: {
+                    name: 'dlsdlworld',
+                    age: 31
+                },
+                inputData: 'hello',
+                type: 'text',
+                site: 'https://www.naver.com',
+                year: 2022
+            },
+            methods: {
+                dlsdlworldSite(channel) {
+                    return this.site + '/' + channel;
+                },
+                nextYear(greetings) {
+                    return greetings + '! ' + this.person.name + '는 내년에 ' + (this.person.age + 1) + '살 입니다';
+                },
+                otherMethod(greetings) {
+                    return this.nextYear(greetings);
+                },
+                click() {
+                    alert("click me!");
+                },
+                plus() {
+                    this.year++;
+                },
+                minus() {
+                    this.year--;
+                },
+                submit() {
+                    alert("submitted!");
+                    console.log("hello");
+                }
+
+
+            }
+        })
+    </script>
+</body>
+
+</html>
